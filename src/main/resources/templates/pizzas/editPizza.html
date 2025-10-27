@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <th:block th:insert="fragments/bootstrap :: bootstrap"></th:block>
+    <title>Document</title>
+</head>
+<body>
+
+    <div th:insert="fragments/navbar :: navbar"></div>
+    <div class="container">
+
+        <h1 class="text-center my-4">UPDATE PIZZA [[${pizza.name}]]</h1>
+        <form class="card p-3" th:action="@{/pizzas/edit/{id}(id = ${pizza.id})}" method="post" th:object="${pizza}">
+            
+            <div class="mb-3">
+                <label for="name" class="form-label">Name:</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    name=""
+                    id="name"
+                    aria-describedby="helpId"
+                    placeholder=""
+                    th:field="*{name}"
+                    th:errorClass="is-invalid"
+                />
+                <div class="mb-3 ps-2 invalid-feedback" th:if="${#fields.hasErrors('name')}">
+                    <ul>
+                        <li th:each="error : ${#fields.errors('name')}" th:text="${error}"></li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description:</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    name=""
+                    id="description"
+                    aria-describedby="helpId"
+                    placeholder=""
+                    th:field="*{description}"
+                    th:errorClass="is-invalid"
+                />
+                <div class="mb-3 ps-2 invalid-feedback" th:if="${#fields.hasErrors('description')}">
+                    <ul>
+                        <li th:each="error : ${#fields.errors('description')}" th:text="${error}"></li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Price: </label>
+                <input
+                    type="number"
+                    class="form-control"
+                    name=""
+                    id="price"
+                    aria-describedby="helpId"
+                    placeholder="Insert price"
+                    step="0.01"
+                    th:field="*{price}"
+                    th:errorClass="is-invalid"
+                />
+                <div class="mb-3 ps-2 invalid-feedback" th:if="${#fields.hasErrors('price')}">
+                    <ul>
+                        <li th:each="error : ${#fields.errors('price')}" th:text="${error}"></li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Photo path: </label>
+                <input
+                    type="text"
+                    class="form-control"
+                    name=""
+                    id="image"
+                    aria-describedby="helpId"
+                    placeholder="Insert Photo path"
+                    th:field="*{photo}"
+                    th:errorClass="is-invalid"
+                />
+                <div class="mb-3 ps-2 invalid-feedback" th:if="${#fields.hasErrors('photo')}">
+                    <ul>
+                        <li th:each="error : ${#fields.errors('photo')}" th:text="${error}"></li>
+                    </ul>
+                </div>
+                
+            </div>
+
+            <div class="d-flex gap-3">
+
+                <button
+                    type="submit"
+                    class="btn btn-success"
+                >
+                    Modify
+                </button>
+                <button
+                    type="reset"
+                    class="btn btn-warning"
+                >
+                    Reset
+                </button>
+            </div>
+            
+
+
+            
+
+        </form>
+
+        
+        
+    </div>
+
+</body>
+</html>
