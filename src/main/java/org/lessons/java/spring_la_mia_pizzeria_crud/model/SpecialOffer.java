@@ -2,6 +2,8 @@ package org.lessons.java.spring_la_mia_pizzeria_crud.model;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,12 +24,14 @@ public class SpecialOffer {
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull(message = "The start date must be inizialized")
     @FutureOrPresent
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @NotNull(message = "The start date must be inizialized")
     private LocalDate startOfferDate;
 
-    @NotNull(message = "The end date must be inizialized")
     @Future
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @NotNull(message = "The end date must be inizialized")
     private LocalDate endOfferDate;
 
     @NotBlank(message = "The title must not be null, nor empty or blank")

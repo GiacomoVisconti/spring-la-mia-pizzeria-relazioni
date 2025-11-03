@@ -11,8 +11,8 @@
     <div th:insert="fragments/navbar :: navbar"></div>
     <div class="container">
 
-        <h1 class="text-center my-4">Adding a Special Offer to [[${specialOffer.pizza.name}]]</h1>
-        <form class="card p-3" th:action="@{/specialoffer/create}" method="post" th:object="${specialOffer}">
+        <h1 class="text-center my-4">Special Offer for [[${specialOffer.pizza.name}]]</h1>
+        <form class="card p-3" th:action="${edit} ? @{|/specialoffer/edit/${specialOffer.id}|} : @{/specialoffer/create}" method="post" th:object="${specialOffer}">
 
             <!-- qui ci sono i dati della mia pizza -->
             <input type="hidden" th:field="*{pizza}" id="liked-pizza">
@@ -64,7 +64,7 @@
                     aria-describedby="helpId"
                     placeholder="Insert endOfferDate"
                     step="0.01"
-                    th:field="*{endOfferDate}"
+                    th:field="${specialOffer.endOfferDate}"
                     th:errorClass="is-invalid"
                 />
                 <div class="mb-3 ps-2 invalid-feedback" th:if="${#fields.hasErrors('endOfferDate')}">
@@ -82,7 +82,7 @@
                     type="submit"
                     class="btn btn-success"
                 >
-                    Add
+                    Save
                 </button>
                 <button
                     type="reset"

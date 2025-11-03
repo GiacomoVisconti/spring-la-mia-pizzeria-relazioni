@@ -83,7 +83,7 @@ public class PizzaController {
     }
     
     @PostMapping("/delete/{id}")
-    public String edit(@PathVariable Integer id){
+    public String delete(@PathVariable Integer id){
         repository.deleteById(id);
         return "redirect:/pizzas/";
     }
@@ -94,7 +94,8 @@ public class PizzaController {
         specialOffer.setPizza(repository.findById(id).get());
 
         model.addAttribute("specialOffer", specialOffer);
-        return "specialoffers/create";
+        model.addAttribute("edit", false);
+        return "specialoffers/create-edit";
     }
     
     
