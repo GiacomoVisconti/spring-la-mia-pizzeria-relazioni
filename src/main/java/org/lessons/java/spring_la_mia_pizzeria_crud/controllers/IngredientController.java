@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 
@@ -45,7 +44,7 @@ public class IngredientController {
         return "ingredients/index";
     }
     
-        @GetMapping("/{id}")
+    @GetMapping("/{id}")
     public String show(@PathVariable("id") Integer id, Model model) {
 
         model.addAttribute("ingredient", ingredientRepository.findById(id).get());

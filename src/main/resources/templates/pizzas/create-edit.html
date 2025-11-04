@@ -38,7 +38,7 @@
                 <p>Ingredienti:</p>
                 <div class="form-check col-2" th:each="ingredient : ${ingredients}">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" th:id="|ingredient-${ingredient.id}|" th:fields="${pizza.ingredients}" th:value="${ingredient.id}"/>
+                        <input class="form-check-input" type="checkbox" th:id="|ingredient-${ingredient.id}|" th:field="${pizza.ingredients}" th:value="${ingredient.id}"/>
                         <label class="form-check-label" th:for="|ingredient-${ingredient.id}|" th:text="${ingredient.name}" ></label>
                     </div>
                 </div>

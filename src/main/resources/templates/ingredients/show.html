@@ -15,12 +15,6 @@
 
         <div th:object="${ingredient}" class="container">
             <h1 class="my-4">Ingredient: [[*{name}]]</h1>
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">[[*{name}]]</h4>
-                </div>
-            </div>
-
             <div class="my-3">
 
                 <!-- MODALE CANCELLAZIONE -->
@@ -68,9 +62,9 @@
                         <div class="col-12">
                             <h4 class="py-3">Pizzas with [[*{name}]]: [[*{pizzas.size()}]]</h4>
                             <div class="alert alert-warning" th:unless="${ingredient.pizzas.size() > 0}">
-                                <p>There is no special offers for this ingredient!</p>
+                                <p>There is no ingredient for this pizza!</p>
                             </div>
-                            <div
+                              <div
                                 class="table-responsive"
                                 th:if="${ingredient.pizzas.size() > 0}"
                             >
@@ -81,14 +75,14 @@
                                         <tr>
                                             <th scope="col">id</th>
                                             <th scope="col">Pizza</th>
-                                            <th scope="col">Pizza</th>
+                                            <th scope="col"></th>
                                             
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="" th:each="pizza : *{pizzas}" th:object="${ingredient}">
+                                        <tr class="" th:each="pizza : ${ingredient.pizzas}">
                                             <td scope="row">[[${pizza.id}]]</td>
-                                            <td scope="row">[[${pizza.title}]]</td>
+                                            <td scope="row">[[${pizza.name}]]</td>
                                             
                                             <td scope="row">
                                                 <a
@@ -104,7 +98,6 @@
                                     </tbody>
                                 </table>
                             </div>
-                            
                         </div>
                     </div>
                 </div>

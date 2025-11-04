@@ -67,7 +67,7 @@
                                 <tr th:each="ingredient : ${ingredients}" th:object="${ingredient}">
                                     <td scope="row" th:text="*{id}"></td>
                                     <td th:text="*{name}"></td>
-                                    <td th:text="*{pizzas.size()}"></td>
+                                    <td th:text="${ingredient.pizzas.size()}"></td>
                                     <td><a
                                         name=""
                                         id=""

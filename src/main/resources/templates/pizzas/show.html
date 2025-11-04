@@ -21,6 +21,12 @@
                     <h4 class="card-title">[[*{name}]]</h4>
                     <p class="card-text">[[*{description}]]</p>
                     <p class="card-text">[[|€ *{price}]]</p>
+                    <strong class="card-text">Ingredienti:</strong>
+                    <div class="d-flex gap-5">
+                        <div th:each="ingredient : ${pizza.ingredients}">
+                            <span>[[${ingredient.name}]] </span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
