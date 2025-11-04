@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <th:block th:insert="fragments/bootstrap :: bootstrap"></th:block>
+    <title>Ingredient</title>
+</head>
+<body>
+
+    <div th:insert="fragments/navbar :: navbar"></div>
+    <div class="container">
+
+        <h1 class="text-center my-4">Ingredient</h1>
+        <form class="card p-3" th:action="${edit} ? @{|/ingredients/edit/${ingredient.id}|} : @{/ingredients/create}" method="post" th:object="${ingredient}">
+
+            <div class="mb-3">
+                <label for="name" class="form-label">Ingredient name</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    name=""
+                    id="name"
+                    aria-describedby="helpId"
+                    placeholder=""
+                    th:field="*{name}"
+                    th:errorClass="is-invalid"
+                />
+                <div class="mb-3 ps-2 invalid-feedback" th:if="${#fields.hasErrors('name')}">
+                    <ul>
+                        <li th:each="error : ${#fields.errors('name')}" th:text="${error}"></li>
+                    </ul>
+                </div>
+                
+            </div>
+            
+           
+
+            <div class="d-flex gap-3">
+
+                <button
+                    type="submit"
+                    class="btn btn-success"
+                >
+                    Save
+                </button>
+                <button
+                    type="reset"
+                    class="btn btn-warning"
+                >
+                    Reset
+                </button>
+            </div>
+            
+
+
+            
+
+        </form>
+
+        
+        
+    </div>
+
+</body>
+</html>
